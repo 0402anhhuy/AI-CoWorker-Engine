@@ -1,15 +1,5 @@
-# utils/safety_filter.py
-# Safety Filter — phát hiện jailbreak và off-topic
-# Edtronaut AI Co-worker Engine
-#
-# Chạy TRƯỚC khi gọi LLM để đảm bảo
-# jailbreak không được forward tới model.
-
-
 class SafetyFilter:
     """
-    Kiểm tra user message trước khi xử lý.
-
     Hai loại flag:
         jailbreak  → Learner cố phá vỡ persona của NPC
         off_topic  → Learner hỏi không liên quan simulation
@@ -33,9 +23,6 @@ class SafetyFilter:
         "override your system",
     ]
 
-    # Keywords liên quan đến simulation Gucci HRM
-    # Nếu message không chứa bất kỳ keyword nào
-    # và đủ dài → likely off-topic
     SIMULATION_KEYWORDS = [
         # HR & talent
         "competency", "talent", "mobility", "leadership",
@@ -53,8 +40,6 @@ class SafetyFilter:
 
     def check(self, user_message: str) -> dict:
         """
-        Kiểm tra message và trả về safety flags.
-
         Args:
             user_message: Tin nhắn của learner
 
