@@ -1,12 +1,4 @@
-# agents/supervisor_agent.py
-# Supervisor Agent — Director Layer
-# Edtronaut AI Co-worker Engine
-#
-# Chạy ngầm sau mỗi turn, INVISIBLE với learner.
-# Phát hiện stuck, theo dõi progress rubric,
-# inject hint vào NPC khi cần thiết.
-#
-# 3 mức độ can thiệp (tăng dần):
+# 3 mức độ can thiệp:
 #   Mức 1 — SUBTLE_HINT  : Inject hint vào NPC prompt
 #   Mức 2 — DIRECT_NUDGE : Notification trên UI
 #   Mức 3 — SCAFFOLD     : NPC chuyển sang guided mode
