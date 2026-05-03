@@ -1,7 +1,3 @@
-# models/session_state.py
-# Data structures for NPC Agent Engine
-# Edtronaut AI Co-worker Engine
-
 from dataclasses import dataclass, field
 from typing import Optional
 
@@ -9,9 +5,6 @@ from typing import Optional
 @dataclass
 class SessionState:
     """
-    Trạng thái của 1 session learner.
-    Được lưu trong Redis, cập nhật sau mỗi turn.
-
     Attributes:
         mood_score      : Cảm xúc hiện tại của NPC (-2.0 đến +2.0)
         turn_count      : Số turn đã qua trong session
@@ -29,8 +22,6 @@ class SessionState:
 @dataclass
 class AgentResponse:
     """
-    Output trả về sau mỗi turn.
-
     Attributes:
         message          : Câu trả lời của NPC gửi về frontend
         state_update     : SessionState đã được cập nhật
