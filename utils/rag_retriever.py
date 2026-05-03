@@ -1,28 +1,11 @@
-# utils/rag_retriever.py
-# RAG Retriever — tìm kiếm relevant context từ vector database
-# Edtronaut AI Co-worker Engine
-#
-# Production: query FAISS với embedding của user_message
-# Prototype : mock retrieval dựa trên keyword matching
-
-
 class RAGRetriever:
     """
-    Retrieval-Augmented Generation component.
-
-    Tìm kiếm simulation content liên quan đến
-    user message và inject vào LLM context.
-
     Production implementation:
         1. Embed user_message thành vector
            (OpenAI ada-002 hoặc sentence-transformers)
         2. Query FAISS index: index.search(vector, k=3)
         3. Rerank kết quả nếu cần (Cohere reranker)
         4. Trả về top-k chunks dưới dạng string
-
-    Prototype:
-        Dùng keyword matching để simulate RAG output.
-        Đủ để demo flow mà không cần FAISS setup.
     """
 
     # Knowledge base — trong production sẽ được
@@ -134,8 +117,6 @@ class RAGRetriever:
 
     def retrieve(self, user_message: str, k: int = 2) -> str:
         """
-        Tìm kiếm context liên quan đến user message.
-
         Args:
             user_message : Tin nhắn của learner
             k            : Số chunks muốn retrieve (default 2)
@@ -153,7 +134,6 @@ class RAGRetriever:
         msg_lower = user_message.lower()
         matched_keys = set()
 
-        # Tìm các knowledge chunks liên quan
         for keyword, chunk_key in self.KEYWORD_MAP.items():
             if keyword in msg_lower:
                 matched_keys.add(chunk_key)
@@ -161,11 +141,8 @@ class RAGRetriever:
                     break
 
         if not matched_keys:
-            # Fallback: trả về Group HR mandate
-            # như default context cho mọi query
             matched_keys.add("group_hr_mandate")
 
-        # Ghép các chunks lại
         retrieved_chunks = [
             self.KNOWLEDGE_BASE[key]
             for key in matched_keys
