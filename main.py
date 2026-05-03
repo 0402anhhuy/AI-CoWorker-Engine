@@ -1,13 +1,3 @@
-# main.py
-# Entry Point — Demo Runner
-# Edtronaut AI Co-worker Engine
-#
-# Chạy file này để test toàn bộ pipeline
-# với mock LLM response.
-#
-# Usage:
-#   python main.py
-
 import sys
 import os
 sys.path.insert(0, os.path.dirname(__file__))
@@ -29,7 +19,7 @@ def run_turn(
     user_message: str,
     label: str = ""
 ):
-    """Helper để chạy 1 turn và print kết quả."""
+
     if label:
         print(f"\n[{label}]")
 
@@ -54,8 +44,8 @@ def run_turn(
 def main():
 
     print("\n" + "═" * 55)
-    print("  Edtronaut AI Co-worker Engine — Demo")
-    print("  NPC: Isabelle Fontaine (Group CHRO, Gucci)")
+    print("  Edtronaut AI Co-worker Engine")
+    print("  NPC: AI-Assist (Group CHRO, Gucci)")
     print("═" * 55)
 
     agent = NPCAgent()
